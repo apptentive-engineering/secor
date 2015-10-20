@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.pinterest</groupId>
+    <groupId>com.apptentive</groupId>
     <artifactId>secor</artifactId>
     <version>0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>secor</name>
     <description>Kafka to s3/gs/swift logs exporter</description>
-    <url>https://github.com/pinterest/secor</url>
+    <url>https://github.com/apptentive/secor</url>
 
     <licenses>
         <license>

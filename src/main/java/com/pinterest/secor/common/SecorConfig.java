@@ -280,6 +280,14 @@ public class SecorConfig {
         return getString("monitoring.prefix");
     }
 
+    public String getAppIdName() {
+        return getString("message.app_id.name");
+    }
+
+    public Long getCreatedAt() {
+        return getLong("message.created_at.name");
+    }
+
     public String getMessageTimestampName() {
         return getString("message.timestamp.name");
     }
