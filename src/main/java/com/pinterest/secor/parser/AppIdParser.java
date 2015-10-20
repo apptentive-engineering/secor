@@ -23,7 +23,7 @@ public abstract class AppIdParser extends MessageParser {
         }
 
         public String[] toArray() {
-            String[] array = {appId, date};
+            String[] array = {"app", appId, "date", date};
             return array;
         }
     }
