@@ -12,21 +12,20 @@ import java.util.TimeZone;
 
 /**
  * Created by stuart on 10/19/15.
- * Implementation of OrgAppIdParser for JSON events
+ * Implementation of AppIdParser for JSON events
  */
-public class JsonOrgAppIdParser extends OrgAppIdParser {
+public class JsonAppIdParser extends AppIdParser {
     private DateFormat formatter;
 
-    public JsonOrgAppIdParser(SecorConfig config) {
+    public JsonAppIdParser(SecorConfig config) {
         super(config);
         formatter = new SimpleDateFormat("yyyy-MM-dd");
         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
-    public OrgAppIdDate extractAppIdAndDate(final Message message) {
+    public AppIdDate extractAppIdAndDate(final Message message) {
         JSONObject obj = (JSONObject) JSONValue.parse(message.getPayload());
-        return new OrgAppIdDate(
-                extractString(obj, "org_id"),
+        return new AppIdDate(
                 extractString(obj, "app_id"),
                 extractDateString(obj, "created_at"));
     }

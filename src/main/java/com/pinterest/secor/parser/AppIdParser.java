@@ -7,30 +7,28 @@ import com.pinterest.secor.message.Message;
  * Created by stuart on 10/19/15.
  * Abstract App ID parser - extracts App ID and Date (YYYY-MM-DD) to use as partition names.
  */
-public abstract class OrgAppIdParser extends MessageParser {
+public abstract class AppIdParser extends MessageParser {
 
-    public OrgAppIdParser(SecorConfig config) {
+    public AppIdParser(SecorConfig config) {
         super(config);
     }
 
-    public class OrgAppIdDate {
-        private String orgId;
+    public class AppIdDate {
         private String appId;
         private String date;
 
-        public OrgAppIdDate(String orgId, String appId, String date) {
-            this.orgId = orgId;
+        public AppIdDate(String appId, String date) {
             this.appId = appId;
             this.date = date;
         }
 
         public String[] toArray() {
-            String[] array = {"org", orgId, "app", appId, "date", date};
+            String[] array = {"app", appId, "date", date};
             return array;
         }
     }
 
-    public abstract OrgAppIdDate extractAppIdAndDate(final Message message);
+    public abstract AppIdDate extractAppIdAndDate(final Message message);
 
     public String[] extractPartitions(final Message message) {
         return extractAppIdAndDate(message).toArray();

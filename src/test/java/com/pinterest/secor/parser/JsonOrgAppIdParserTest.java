@@ -58,59 +58,47 @@ public class JsonOrgAppIdParserTest extends TestCase {
 
     @Test
     public void testExtractCorrect() throws Exception {
-        String[] path = new JsonOrgAppIdParser(mConfig).extractPartitions(mCorrect1);
-        assertEquals("org", path[0]);
-        assertEquals("abcd", path[1]);
-        assertEquals("app", path[2]);
-        assertEquals("1234", path[3]);
-        assertEquals("date", path[4]);
-        assertEquals("1970-01-21", path[5]);
+        String[] path = new JsonAppIdParser(mConfig).extractPartitions(mCorrect1);
+        assertEquals("app", path[0]);
+        assertEquals("1234", path[1]);
+        assertEquals("date", path[2]);
+        assertEquals("1970-01-21", path[3]);
 
-        path = new JsonOrgAppIdParser(mConfig).extractPartitions(mCorrect2);
-        assertEquals("org", path[0]);
-        assertEquals("abcd", path[1]);
-        assertEquals("app", path[2]);
-        assertEquals("1234", path[3]);
-        assertEquals("date", path[4]);
-        assertEquals("1970-01-20", path[5]);
+        path = new JsonAppIdParser(mConfig).extractPartitions(mCorrect2);
+        assertEquals("app", path[0]);
+        assertEquals("1234", path[1]);
+        assertEquals("date", path[2]);
+        assertEquals("1970-01-20", path[3]);
     }
 
     @Test
     public void testExtractMissingData() throws Exception {
-        String[] path = new JsonOrgAppIdParser(mConfig).extractPartitions(mMissingAppId);
-        assertEquals("org", path[0]);
-        assertEquals("abcd", path[1]);
-        assertEquals("app", path[2]);
-        assertEquals("None", path[3]);
-        assertEquals("date", path[4]);
-        assertEquals("1970-01-21", path[5]);
-
-        path = new JsonOrgAppIdParser(mConfig).extractPartitions(mMissingOrgId);
-        assertEquals("org", path[0]);
+        String[] path = new JsonAppIdParser(mConfig).extractPartitions(mMissingAppId);
+        assertEquals("app", path[0]);
         assertEquals("None", path[1]);
-        assertEquals("app", path[2]);
-        assertEquals("1234", path[3]);
-        assertEquals("date", path[4]);
-        assertEquals("1970-01-21", path[5]);
+        assertEquals("date", path[2]);
+        assertEquals("1970-01-21", path[3]);
 
-        path = new JsonOrgAppIdParser(mConfig).extractPartitions(mMissingDate);
-        assertEquals("org", path[0]);
-        assertEquals("abcd", path[1]);
-        assertEquals("app", path[2]);
-        assertEquals("1234", path[3]);
-        assertEquals("date", path[4]);
-        assertEquals("0000-00-00", path[5]);
+        path = new JsonAppIdParser(mConfig).extractPartitions(mMissingOrgId);
+        assertEquals("app", path[0]);
+        assertEquals("1234", path[1]);
+        assertEquals("date", path[2]);
+        assertEquals("1970-01-21", path[3]);
+
+        path = new JsonAppIdParser(mConfig).extractPartitions(mMissingDate);
+        assertEquals("app", path[0]);
+        assertEquals("1234", path[1]);
+        assertEquals("date", path[2]);
+        assertEquals("0000-00-00", path[3]);
 
     }
 
     @Test
     public void testExtractInvalidData() throws Exception {
-        String[] path = new JsonOrgAppIdParser(mConfig).extractPartitions(mInvalidDate);
-        assertEquals("org", path[0]);
-        assertEquals("abcd", path[1]);
-        assertEquals("app", path[2]);
-        assertEquals("1234", path[3]);
-        assertEquals("date", path[4]);
-        assertEquals("0000-00-00", path[5]);
+        String[] path = new JsonAppIdParser(mConfig).extractPartitions(mInvalidDate);
+        assertEquals("app", path[0]);
+        assertEquals("1234", path[1]);
+        assertEquals("date", path[2]);
+        assertEquals("0000-00-00", path[3]);
     }
 }
